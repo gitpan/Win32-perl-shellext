@@ -1,0 +1,71 @@
+@rem = '--*-Perl-*--
+@echo off
+perl -x -S %0 %1 %2 %3 %4 %5 %6 %7 %8 %9
+goto endofperl
+@rem ';
+#!perl
+#line 8
+#perl
+
+if (defined &Win32::GetLongPathName) {
+   $in = Win32::GetLongPathName($ARGV[0]);
+} else {
+   eval '
+	use Win32::LFN;
+	$in = GetLongPathName($ARGV[0]);
+   ';
+
+   if ($@) {
+	print "ERROR: Win32::LFN not found\n"; exit;
+   }
+}
+
+($dir, $in_name)  = $in  =~ /^(.*)\\(.*)$/;
+($out_name = $in_name) =~ s/\.pod$//i;
+$out_name .= ".html";
+$out_name =~ s/\s+//g;
+$dir  = _sn($dir);
+@ARGV = (( qw/--netscape --noindex/ ),
+ "--infile=$dir\\$in_name",
+ "--outfile=$dir\\$out_name");
+
+# print map"$_\n",@ARGV;exit;
+
+sub _sn{Win32::GetShortPathName(pop)=~/[^\0]+/&&$&}
+
+
+=pod
+
+=head1 NAME
+
+p2h_auto - convert .pod files to .html files
+
+=head1 DESCRIPTION
+
+Converts files from pod format (see L<perlpod>) to HTML format.
+
+This bat-file is pretty the same as pod2html.bat that is in your <perl>/bin
+for ages. It was made to add "POD to HTML" shell extension to .pm and .pod
+files on Win32. Shell ext. is what you see when you right-click on your
+file.
+
+You can remove --noindex and/or --netscape if you don't like it - look
+into "real" pod2html.bat for explanations.
+
+I had to do this to override the stupid limitation on command line length.
+
+Mike Blazer blazer@mail.nevalink.ru
+
+Feb 15, 2001
+
+=head1 COPYRIGHT
+
+This program is distributed under the Artistic License.
+
+=cut
+
+use Pod::Html;
+
+pod2html @ARGV;
+__END__
+:endofperl

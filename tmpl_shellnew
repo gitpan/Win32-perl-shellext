@@ -1,0 +1,3 @@
+[HKEY_CLASSES_ROOT\.%EXT%\ShellNew]
+"FileName"="%PERL_ICONS_PATH%\\perl-template.pl"
+

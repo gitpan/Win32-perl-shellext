@@ -1,0 +1,20 @@
+[HKEY_CLASSES_ROOT\.%EXT%]
+@="%EXT%_auto_file"
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file]
+@="%UC_EXT% File"
+"EditFlags"=hex:00,00,00,00
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file\DefaultIcon]
+@="%PERL_ICONS_PATH%\\%ICON%"
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file\shell]
+@=""
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file\shell\POD_to_HTML]
+"EditFlags"=hex:01,00,00,00
+@="POD to HTML"
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file\shell\POD_to_HTML\command]
+@="p2h_auto.bat \"%1\" "
+

@@ -1,0 +1,71 @@
+Win32 shell extension for perl files
+------------------------------------
+version 0.02
+(previously called pod2html_shellext)
+
+Run install.bat to add pretty icons to your .pl, .plx, .cgi, .pm and
+.pod files. ShellNew items will be added for .pl and .cgi extensions
+(that is mouse Right-Click-New-PL File).
+In addition to that "POD to HTML" shell extension will be added
+to .pm and .pod files.
+
+So, you could convert pod 2 html with just two mouse clicks.
+
+Wow!
+
+Not "Wow"? Well, I've found this handy.
+
+You'll need my Win32::LFN module for this shell extension to run
+unless your perl has Win32::GetLongPathName built-in function
+(ActiveState ActivePerl after build 514 or new 5.6 release).
+
+install.bat is safe to run multiple times if you want to change icons.
+BTW - if somebody can make pretty icons - I'd be glad to replace mine.
+
+If you want to change the underlying pod2html behavior -
+read the docs inside your pod2html.bat and make changes in p2h_auto.bat
+(that is in your <perl>/bin after the installation) or in p2h_auto.b_t
+in this distribution. The default options are --noindex, --netscape
+
+If your .pl and other extensions are already associated with some
+applications it's much likely that this addition will not break those
+settings.
+
+This package was successfully tested on Win95, Win98, Win2000 Pro.
+
+NOTE: on some systems (if not always) your .pl and .cgi extensions
+should be associated with some program (like perl.exe or Notepad
+or whatever) for ShellNew to work. If you have no such an association
+you can't run CGI application under some local server as we usually
+do for testing.
+So, in Windows Explorer open View|Options or Tools|Folder Options
+(depending on your Windows version), go to the "File Types" pane
+and associate "CGI file" and "PL File" types - add new action, for
+example:
+"Open"
+"c:\perl\bin\perl.exe" "%1"
+
+NOTE2: you can always edit the perl-template.pl file that is in your
+<perl>\icons\ directory. After the installation it contains almost
+nothing. You can add your personal info or CVS vars or whatever.
+In order to make a separate template for CGI files you can edit
+HKEY_CLASSES_ROOT\.cgi\ShellNew\FileName string in your registry.
+
+
+Enjoy!
+
+Mike Blazer         <blazer@mail.nevalink.ru>   February 15, 2001
+
+http://www.dux.ru/guest/fno/perl/
+
+
+
+Copyright (C) 2001 Mike Blazer.
+
+This package is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+
+This is beta-software - use it at your own risk.
+The author takes no responsibility etc. etc.
+

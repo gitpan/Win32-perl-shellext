@@ -1,0 +1,11 @@
+[HKEY_CLASSES_ROOT\.%EXT%]
+@="%EXT%_auto_file"
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file]
+@="%UC_EXT% File"
+"EditFlags"=hex:00,00,00,00
+
+[HKEY_CLASSES_ROOT\%EXT%_auto_file\DefaultIcon]
+@="%PERL_ICONS_PATH%\\%ICON%"
+
+
